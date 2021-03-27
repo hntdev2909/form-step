@@ -8,10 +8,10 @@ import {
 	FormLoginTitle,
 } from './FormLogin.styles';
 
-function FormLogin() {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-	// const [error, setError] = useState('');
+function FormLogin({ currentStep, handleChange, data }) {
+	if (currentStep !== 1) {
+		return null;
+	}
 
 	return (
 		<FormLoginContainer>
@@ -22,17 +22,19 @@ function FormLogin() {
 				<FormLoginControl>
 					<FormLoginLabel>Email:</FormLoginLabel>
 					<FormLoginInput
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
+						value={data?.email}
+						onChange={handleChange}
 						type="email"
 						placeholder="Nhập email"
+						name="email"
 					/>
 				</FormLoginControl>
 				<FormLoginControl>
 					<FormLoginLabel>Password:</FormLoginLabel>
 					<FormLoginInput
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
+						name="password"
+						value={data?.password}
+						onChange={handleChange}
 						type="password"
 						placeholder="Nhập mật khẩu"
 					/>

@@ -9,13 +9,10 @@ import {
 	FormInfoTitle,
 } from './FormInformation.styles';
 
-function FormInformation() {
-	const [firstName, setFirstName] = useState('');
-	const [lastName, setLastName] = useState('');
-	const [dateOfBirth, setDateOfBirth] = useState('');
-	const [IdNumber, setIdNumber] = useState('');
-	const [address, setAddress] = useState('');
-	const [phoneNumber, setPhoneNumber] = useState('');
+function FormInformation({ currentStep, handleChange, data }) {
+	if (currentStep !== 2) {
+		return null;
+	}
 
 	return (
 		<FormInfoContainer>
@@ -24,43 +21,45 @@ function FormInformation() {
 				<FormInfoControl>
 					<FormInfoLabel>First name:</FormInfoLabel>
 					<FormInfoInput
-						value={firstName}
-						onChange={(e) => setFirstName(e.target.value)}
+						name="firstname"
+						value={data.firstname}
+						onChange={handleChange}
 					/>
 				</FormInfoControl>
 				<FormInfoControl>
 					<FormInfoLabel>Last name:</FormInfoLabel>
 					<FormInfoInput
-						value={lastName}
-						onChange={(e) => setLastName(e.target.value)}
+						name="lastname"
+						value={data.lastname}
+						onChange={handleChange}
 					/>
 				</FormInfoControl>
 				<FormInfoControl>
 					<FormInfoLabel>Date of birth:</FormInfoLabel>
-					<FormInfoInput
-						value={dateOfBirth}
-						onChange={(e) => setDateOfBirth(e.target.value)}
-					/>
+					<FormInfoInput name="dob" value={data.dob} onChange={handleChange} />
 				</FormInfoControl>
 				<FormInfoControl>
 					<FormInfoLabel>ID number:</FormInfoLabel>
 					<FormInfoInput
-						value={IdNumber}
-						onChange={(e) => setIdNumber(e.target.value)}
+						name="idnumber"
+						value={data.idnumber}
+						onChange={handleChange}
 					/>
 				</FormInfoControl>
 				<FormInfoControl>
 					<FormInfoLabel>Address:</FormInfoLabel>
 					<FormInfoInput
-						value={address}
-						onChange={(e) => setAddress(e.target.value)}
+						name="address"
+						value={data.address}
+						onChange={handleChange}
 					/>
 				</FormInfoControl>
 				<FormInfoControl>
 					<FormInfoLabel>Phone number:</FormInfoLabel>
 					<FormInfoInput
-						value={phoneNumber}
-						onChange={(e) => setPhoneNumber(e.target.value)}
+						name="phonenumber"
+						value={data.phonenumber}
+						onChange={handleChange}
 					/>
 				</FormInfoControl>
 			</FormInfoBox>

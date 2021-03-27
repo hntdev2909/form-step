@@ -10,41 +10,43 @@ import {
 	InformationTitle,
 } from './Information.styles';
 
-function Information() {
+function Information({ currentStep, data }) {
+	if (currentStep !== 3) return null;
+
 	return (
 		<InformationContainer>
 			<InformationBox>
 				<InformationControl>
 					<InformationLabel>Email:</InformationLabel>
-					<InformationLabelValue>hnthinh2909@gmail.com</InformationLabelValue>
+					<InformationLabelValue>{data.email}</InformationLabelValue>
 				</InformationControl>
 				<InformationControl>
 					<InformationLabel>Password:</InformationLabel>
-					<InformationLabelValue>*********</InformationLabelValue>
+					<InformationLabelValue>{data.password}</InformationLabelValue>
 				</InformationControl>
 				<InformationControl>
 					<InformationLabel>First name:</InformationLabel>
-					<InformationLabelValue>Thinh</InformationLabelValue>
+					<InformationLabelValue>{data.firstname}</InformationLabelValue>
 				</InformationControl>
 				<InformationControl>
 					<InformationLabel>Last name:</InformationLabel>
-					<InformationLabelValue>Huynh Ngoc</InformationLabelValue>
+					<InformationLabelValue>{data.lastname}</InformationLabelValue>
 				</InformationControl>
 				<InformationControl>
 					<InformationLabel>Date of birth:</InformationLabel>
-					<InformationLabelValue>29/09/1997</InformationLabelValue>
+					<InformationLabelValue>{data.dob}</InformationLabelValue>
 				</InformationControl>
 				<InformationControl>
 					<InformationLabel>ID number:</InformationLabel>
-					<InformationLabelValue>192056828</InformationLabelValue>
+					<InformationLabelValue>{data.idnumber}</InformationLabelValue>
 				</InformationControl>
 				<InformationControl>
 					<InformationLabel>Address:</InformationLabel>
-					<InformationLabelValue>Hue</InformationLabelValue>
+					<InformationLabelValue>{data.address}</InformationLabelValue>
 				</InformationControl>
 				<InformationControl>
 					<InformationLabel>Phone number:</InformationLabel>
-					<InformationLabelValue>0899236266</InformationLabelValue>
+					<InformationLabelValue>{data.phonenumber}</InformationLabelValue>
 				</InformationControl>
 			</InformationBox>
 		</InformationContainer>
