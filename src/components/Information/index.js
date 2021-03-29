@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Icons } from '../../themes';
 
 import {
 	InformationContainer,
@@ -8,9 +9,30 @@ import {
 	InformationLabelValue,
 	InformationButton,
 	InformationTitle,
+	InformationIcon,
+	InformationPasswordBtn,
 } from './Information.styles';
 
 function Information({ currentStep, data }) {
+	const [hidePassword, setHidePassword] = useState('');
+	const [isHidePassword, setIsHidePassword] = useState(true);
+
+	const handleShowPassword = () => {
+		setIsHidePassword(!isHidePassword);
+	};
+
+	useEffect(() => {
+		let tmpPassword = '';
+
+		for (let i = 0; i < data.password?.length; i++) {
+			tmpPassword += '*';
+		}
+
+		setHidePassword(tmpPassword);
+	}, []);
+
+	console.log(hidePassword);
+
 	if (currentStep !== 3) return null;
 
 	return (
@@ -22,7 +44,20 @@ function Information({ currentStep, data }) {
 				</InformationControl>
 				<InformationControl>
 					<InformationLabel>Password:</InformationLabel>
-					<InformationLabelValue>{data.password}</InformationLabelValue>
+					<InformationLabelValue>
+						{isHidePassword ? data.password : hidePassword}{' '}
+					</InformationLabelValue>
+					<InformationPasswordBtn>
+						{isHidePassword ? (
+							<InformationButton onClick={handleShowPassword}>
+								<InformationIcon src={Icons.hideIcon?.default} />
+							</InformationButton>
+						) : (
+							<InformationButton onClick={handleShowPassword}>
+								<InformationIcon src={Icons.displayIcon?.default} />
+							</InformationButton>
+						)}
+					</InformationPasswordBtn>
 				</InformationControl>
 				<InformationControl>
 					<InformationLabel>First name:</InformationLabel>

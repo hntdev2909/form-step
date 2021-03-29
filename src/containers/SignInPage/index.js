@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { FormLogin, FormInformation, Information } from '../../components';
+import {
+	FormLogin,
+	FormInformation,
+	Information,
+	BreadCrumb,
+} from '../../components';
 import {
 	SignInPageContainer,
 	SignInBox,
@@ -70,12 +75,11 @@ function SignInPage() {
 		}
 	};
 
-	console.log(data);
-
 	return (
 		<SignInPageContainer>
 			<SignInMain>
 				<SignInTitle>Create New Account</SignInTitle>
+				<BreadCrumb currentStep={currentStep} />
 				<SignInBox>
 					<FormLogin
 						currentStep={currentStep}

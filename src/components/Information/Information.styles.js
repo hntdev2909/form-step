@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+const InformationIcon = styled.img`
+	width: 100%;
+`;
+
 const InformationTitle = styled.h1`
 	min-width: 750px;
 	font-size: 1.8rem;
@@ -7,18 +11,24 @@ const InformationTitle = styled.h1`
 	padding-top: 24px;
 `;
 
-const InformationButton = styled.a`
-	font-size: 1.15rem;
-	// background-color: #6752d7;
-	background-color: ${(props) => props.bgColor || '#8993f7'};
-	color: white;
-	padding: 12px 24px;
-	border-radius: 5px;
-	font-weight: 500;
-	margin-top: 45px;
-	margin-right: 0;
+const InformationButton = styled.span`
+	display: block;
+	width: 45px;
+	height: 45px;
+	padding: 10px;
+	border-radius: 50%;
+	transition: linear 0.1s;
+
+	&:hover {
+		cursor: pointer;
+		background-color: #b9c0ff;
+	}
 `;
 
+const InformationPasswordBtn = styled.div`
+	position: absolute;
+	right: 0;
+`;
 const InformationLabelValue = styled.label`
 	flex: 1;
 	font-size: 1.1rem;
@@ -42,6 +52,7 @@ const InformationControl = styled.div`
 	margin-bottom: 15px;
 	align-items: center;
 	justify-content: ${(props) => props.justifyContent};
+	position: relative;
 `;
 
 const InformationBox = styled.div`
@@ -68,4 +79,6 @@ export {
 	InformationLabelValue,
 	InformationButton,
 	InformationTitle,
+	InformationIcon,
+	InformationPasswordBtn,
 };
