@@ -30,37 +30,41 @@ function SignInPage() {
 	};
 
 	const handleNextStep = () => {
-		const regexEmail = new RegExp(/^.+@.+$/);
-		const regexDOB = new RegExp(
-			/^(0?[1-9]|[12][0-9]|3[01])([ \/\-])(0?[1-9]|1[012])\2([0-9][0-9][0-9][0-9])(([ -])([0-1]?[0-9]|2[0-3]):[0-5]?[0-9]:[0-5]?[0-9])?$/
-		);
-		const regexFirstName = new RegExp(
-			/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/g
-		);
-		const regexLastName = new RegExp(
-			/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/g
-		);
-		const regexAddress = new RegExp(
-			/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/g
-		);
-		const regexID = new RegExp(/^[0-9]{9,10}$/);
-		const regexPhoneNumber = new RegExp(/^[0-9]{10}$/);
+		// const regexEmail = new RegExp(/^.+@.+$/);
+		// const regexDOB = new RegExp(
+		// 	/^(0?[1-9]|[12][0-9]|3[01])([ \/\-])(0?[1-9]|1[012])\2([0-9][0-9][0-9][0-9])(([ -])([0-1]?[0-9]|2[0-3]):[0-5]?[0-9]:[0-5]?[0-9])?$/
+		// );
+		// const regexFirstName = new RegExp(
+		// 	/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/g
+		// );
+		// const regexLastName = new RegExp(
+		// 	/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/g
+		// );
+		// const regexAddress = new RegExp(
+		// 	/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/g
+		// );
+		// const regexID = new RegExp(/^[0-9]{9,10}$/);
+		// const regexPhoneNumber = new RegExp(/^[0-9]{10}$/);
 
-		const checkStepOne =
-			regexEmail.test(data.email) && data.password.length > 6;
-		const checkStepTwo =
-			regexFirstName.test(data.firstname) &&
-			regexLastName.test(data.lastname) &&
-			regexDOB.test(data.dob) &&
-			regexID.test(data.idnumber) &&
-			regexAddress.test(data.address) &&
-			regexPhoneNumber.test(data.phonenumber);
+		// const checkStepOne =
+		// 	regexEmail.test(data.email) && data.password.length > 6;
+		// const checkStepTwo =
+		// 	regexFirstName.test(data.firstname) &&
+		// 	regexLastName.test(data.lastname) &&
+		// 	regexDOB.test(data.dob) &&
+		// 	regexID.test(data.idnumber) &&
+		// 	regexAddress.test(data.address) &&
+		// 	regexPhoneNumber.test(data.phonenumber);
 
-		if (currentStep === 1 && checkStepOne) {
+		// if (currentStep === 1 && checkStepOne) {
+		// 	dispatch(addDataLogin(data));
+		// 	setCurrentStep(currentStep + 1);
+		// }
+
+		if (currentStep === 1) {
 			setCurrentStep(currentStep + 1);
 		}
-
-		if (currentStep === 2 && checkStepTwo) {
+		if (currentStep === 2) {
 			setCurrentStep(currentStep + 1);
 		}
 	};
@@ -84,15 +88,18 @@ function SignInPage() {
 					<FormLogin
 						currentStep={currentStep}
 						handleChange={handleChange}
-						data={data}
+						// data={dataForm.stepOne}
 					/>
 
 					<FormInformation
 						currentStep={currentStep}
 						handleChange={handleChange}
-						data={data}
+						// data={dataForm.stepTwo}
 					/>
-					<Information data={data} currentStep={currentStep} />
+					<Information
+						// data={data}
+						currentStep={currentStep}
+					/>
 				</SignInBox>
 				<SignInNavigation>
 					{currentStep !== 1 && (

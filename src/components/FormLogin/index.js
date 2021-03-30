@@ -7,8 +7,19 @@ import {
 	FormLoginInput,
 	FormLoginTitle,
 } from './FormLogin.styles';
+import { useSelector, useDispatch } from 'react-redux';
+import { addDataLogin } from '../../actions';
 
-function FormLogin({ currentStep, handleChange, data }) {
+function FormLogin({ currentStep, handleChange }) {
+	const dataForm = useSelector((state) => state.formData.stepOne);
+	const dispatch = useDispatch();
+	const [email, setEmail] = useState(dataForm.email);
+	const [password, setPassword] = useState(dataForm.password);
+
+	useEffect(() => {
+		dispatch(addDataLogin({ email, password }));
+	}, [currentStep]);
+
 	if (currentStep !== 1) {
 		return null;
 	}
@@ -22,8 +33,8 @@ function FormLogin({ currentStep, handleChange, data }) {
 				<FormLoginControl>
 					<FormLoginLabel>Email:</FormLoginLabel>
 					<FormLoginInput
-						value={data?.email}
-						onChange={handleChange}
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
 						type="email"
 						placeholder="Nhập email"
 						name="email"
@@ -33,8 +44,8 @@ function FormLogin({ currentStep, handleChange, data }) {
 					<FormLoginLabel>Password:</FormLoginLabel>
 					<FormLoginInput
 						name="password"
-						value={data?.password}
-						onChange={handleChange}
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
 						type="password"
 						placeholder="Nhập mật khẩu"
 					/>

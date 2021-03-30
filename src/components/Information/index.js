@@ -12,10 +12,13 @@ import {
 	InformationIcon,
 	InformationPasswordBtn,
 } from './Information.styles';
+import { useSelector } from 'react-redux';
 
-function Information({ currentStep, data }) {
+function Information({ currentStep }) {
 	const [hidePassword, setHidePassword] = useState('');
 	const [isHidePassword, setIsHidePassword] = useState(true);
+
+	const data = useSelector((state) => state.formData);
 
 	const handleShowPassword = () => {
 		setIsHidePassword(!isHidePassword);
@@ -24,14 +27,12 @@ function Information({ currentStep, data }) {
 	useEffect(() => {
 		let tmpPassword = '';
 
-		for (let i = 0; i < data.password?.length; i++) {
+		for (let i = 0; i < data.stepOne.password?.length; i++) {
 			tmpPassword += '*';
 		}
 
 		setHidePassword(tmpPassword);
 	}, []);
-
-	console.log(hidePassword);
 
 	if (currentStep !== 3) return null;
 
@@ -40,12 +41,12 @@ function Information({ currentStep, data }) {
 			<InformationBox>
 				<InformationControl>
 					<InformationLabel>Email:</InformationLabel>
-					<InformationLabelValue>{data.email}</InformationLabelValue>
+					<InformationLabelValue>{data.stepOne.email}</InformationLabelValue>
 				</InformationControl>
 				<InformationControl>
 					<InformationLabel>Password:</InformationLabel>
 					<InformationLabelValue>
-						{isHidePassword ? data.password : hidePassword}{' '}
+						{isHidePassword ? data.stepOne.password : hidePassword}{' '}
 					</InformationLabelValue>
 					<InformationPasswordBtn>
 						{isHidePassword ? (
@@ -61,27 +62,29 @@ function Information({ currentStep, data }) {
 				</InformationControl>
 				<InformationControl>
 					<InformationLabel>First name:</InformationLabel>
-					<InformationLabelValue>{data.firstname}</InformationLabelValue>
+					<InformationLabelValue>{data.stepTwo.fname}</InformationLabelValue>
 				</InformationControl>
 				<InformationControl>
 					<InformationLabel>Last name:</InformationLabel>
-					<InformationLabelValue>{data.lastname}</InformationLabelValue>
+					<InformationLabelValue>{data.stepTwo.lname}</InformationLabelValue>
 				</InformationControl>
 				<InformationControl>
 					<InformationLabel>Date of birth:</InformationLabel>
-					<InformationLabelValue>{data.dob}</InformationLabelValue>
+					<InformationLabelValue>{data.stepTwo.dob}</InformationLabelValue>
 				</InformationControl>
 				<InformationControl>
 					<InformationLabel>ID number:</InformationLabel>
-					<InformationLabelValue>{data.idnumber}</InformationLabelValue>
+					<InformationLabelValue>{data.stepTwo.idnumber}</InformationLabelValue>
 				</InformationControl>
 				<InformationControl>
 					<InformationLabel>Address:</InformationLabel>
-					<InformationLabelValue>{data.address}</InformationLabelValue>
+					<InformationLabelValue>{data.stepTwo.address}</InformationLabelValue>
 				</InformationControl>
 				<InformationControl>
 					<InformationLabel>Phone number:</InformationLabel>
-					<InformationLabelValue>{data.phonenumber}</InformationLabelValue>
+					<InformationLabelValue>
+						{data.stepTwo.phonenumber}
+					</InformationLabelValue>
 				</InformationControl>
 			</InformationBox>
 		</InformationContainer>

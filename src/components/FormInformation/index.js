@@ -8,8 +8,26 @@ import {
 	FormInfoButton,
 	FormInfoTitle,
 } from './FormInformation.styles';
+import { useSelector, useDispatch } from 'react-redux';
+import { addDataProfile } from '../../actions';
 
-function FormInformation({ currentStep, handleChange, data }) {
+function FormInformation({ currentStep, handleChange }) {
+	const dataForm = useSelector((state) => state.formData.stepTwo);
+	const [fname, setFname] = useState(dataForm.fname);
+	const [lname, setLname] = useState(dataForm.lname);
+	const [dob, setDob] = useState(dataForm.dob);
+	const [idnumber, setIdnumber] = useState(dataForm.idnumber);
+	const [address, setAddress] = useState(dataForm.address);
+	const [phonenumber, setPhonenumber] = useState(dataForm.phonenumber);
+
+	useEffect(() => {
+		dispatch(
+			addDataProfile({ fname, lname, dob, idnumber, address, phonenumber })
+		);
+	}, [currentStep]);
+
+	const dispatch = useDispatch();
+
 	if (currentStep !== 2) {
 		return null;
 	}
@@ -22,44 +40,48 @@ function FormInformation({ currentStep, handleChange, data }) {
 					<FormInfoLabel>First name:</FormInfoLabel>
 					<FormInfoInput
 						name="firstname"
-						value={data.firstname}
-						onChange={handleChange}
+						value={fname}
+						onChange={(e) => setFname(e.target.value)}
 					/>
 				</FormInfoControl>
 				<FormInfoControl>
 					<FormInfoLabel>Last name:</FormInfoLabel>
 					<FormInfoInput
 						name="lastname"
-						value={data.lastname}
-						onChange={handleChange}
+						value={lname}
+						onChange={(e) => setLname(e.target.value)}
 					/>
 				</FormInfoControl>
 				<FormInfoControl>
 					<FormInfoLabel>Date of birth:</FormInfoLabel>
-					<FormInfoInput name="dob" value={data.dob} onChange={handleChange} />
+					<FormInfoInput
+						name="dob"
+						value={dob}
+						onChange={(e) => setDob(e.target.value)}
+					/>
 				</FormInfoControl>
 				<FormInfoControl>
 					<FormInfoLabel>ID number:</FormInfoLabel>
 					<FormInfoInput
 						name="idnumber"
-						value={data.idnumber}
-						onChange={handleChange}
+						value={idnumber}
+						onChange={(e) => setIdnumber(e.target.value)}
 					/>
 				</FormInfoControl>
 				<FormInfoControl>
 					<FormInfoLabel>Address:</FormInfoLabel>
 					<FormInfoInput
 						name="address"
-						value={data.address}
-						onChange={handleChange}
+						value={address}
+						onChange={(e) => setAddress(e.target.value)}
 					/>
 				</FormInfoControl>
 				<FormInfoControl>
 					<FormInfoLabel>Phone number:</FormInfoLabel>
 					<FormInfoInput
 						name="phonenumber"
-						value={data.phonenumber}
-						onChange={handleChange}
+						value={phonenumber}
+						onChange={(e) => setPhonenumber(e.target.value)}
 					/>
 				</FormInfoControl>
 			</FormInfoBox>
