@@ -26,7 +26,6 @@ const formDataReducer = (state = initialState, action) => {
 				},
 			};
 		case nameTypeConstant.ADD_INFO_PROFILE:
-			console.log(action);
 			return {
 				...state,
 				stepTwo: {

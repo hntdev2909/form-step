@@ -8,7 +8,6 @@ import {
 	InformationLabel,
 	InformationLabelValue,
 	InformationButton,
-	InformationTitle,
 	InformationIcon,
 	InformationPasswordBtn,
 } from './Information.styles';

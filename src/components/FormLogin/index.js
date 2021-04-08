@@ -10,7 +10,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { addDataLogin } from '../../actions';
 
-function FormLogin({ currentStep, handleChange }) {
+function FormLogin({ currentStep }) {
 	const dataForm = useSelector((state) => state.formData.stepOne);
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState(dataForm.email);

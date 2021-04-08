@@ -5,13 +5,12 @@ import {
 	FormInfoControl,
 	FormInfoLabel,
 	FormInfoInput,
-	FormInfoButton,
 	FormInfoTitle,
 } from './FormInformation.styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { addDataProfile } from '../../actions';
 
-function FormInformation({ currentStep, handleChange }) {
+function FormInformation({ currentStep }) {
 	const dataForm = useSelector((state) => state.formData.stepTwo);
 	const [fname, setFname] = useState(dataForm.fname);
 	const [lname, setLname] = useState(dataForm.lname);
