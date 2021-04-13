@@ -10,7 +10,10 @@ import {
 	InformationButton,
 	InformationIcon,
 	InformationPasswordBtn,
+	InformationLoading,
 } from './Information.styles';
+
+import { Spinner } from '../index';
 import { useSelector } from 'react-redux';
 
 function Information({ currentStep }) {
@@ -18,6 +21,7 @@ function Information({ currentStep }) {
 	const [isHidePassword, setIsHidePassword] = useState(true);
 
 	const data = useSelector((state) => state.formData);
+	const { isLoading } = useSelector((state) => state.alert);
 
 	const handleShowPassword = () => {
 		setIsHidePassword(!isHidePassword);
@@ -29,14 +33,18 @@ function Information({ currentStep }) {
 		for (let i = 0; i < data.stepOne.password?.length; i++) {
 			tmpPassword += '*';
 		}
-
 		setHidePassword(tmpPassword);
-	}, []);
+	}, [currentStep]);
 
 	if (currentStep !== 3) return null;
 
 	return (
 		<InformationContainer>
+			{isLoading && (
+				<InformationLoading>
+					<Spinner></Spinner>
+				</InformationLoading>
+			)}
 			<InformationBox>
 				<InformationControl>
 					<InformationLabel>Email:</InformationLabel>
@@ -45,7 +53,7 @@ function Information({ currentStep }) {
 				<InformationControl>
 					<InformationLabel>Password:</InformationLabel>
 					<InformationLabelValue>
-						{isHidePassword ? data.stepOne.password : hidePassword}{' '}
+						{isHidePassword ? hidePassword : data.stepOne.password}{' '}
 					</InformationLabelValue>
 					<InformationPasswordBtn>
 						{isHidePassword ? (

@@ -1,5 +1,18 @@
 import styled from 'styled-components';
 
+const InformationLoading = styled.div`
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.4);
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
+
 const InformationIcon = styled.img`
 	width: 100%;
 `;
@@ -69,6 +82,7 @@ const InformationContainer = styled.div`
 	box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px 0px,
 		rgb(0 0 0 / 10%) 0px 25px 50px 0px;
 	border-radius: 10px;
+	position: relative;
 `;
 
 export {
@@ -81,4 +95,5 @@ export {
 	InformationTitle,
 	InformationIcon,
 	InformationPasswordBtn,
+	InformationLoading,
 };
